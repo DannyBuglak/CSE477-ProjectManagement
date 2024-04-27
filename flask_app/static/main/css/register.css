@@ -1,0 +1,132 @@
+/*
+CSS for the register page of the website on register.html
+*/
+
+/* CSS For register page*/
+.register-page {
+    position: relative;
+    background-color: rgba(255, 255, 255 0.5);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background image of the register */
+.register-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../images/background.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+
+
+/*
+--- CSS for Register container for users
+*/
+
+/* CSS for the register container */
+.register-container {
+    width: 30vw;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #a9a9a9;
+    border-radius: 2em;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 5;
+}
+
+/* Header for log in */
+.register-container h2 {
+    margin-bottom: 1.5rem;
+}
+
+/* Form group of email and password entry */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* Label for where to enter */
+.form-group label {
+    display: block;
+    text-align: left;
+}
+
+/* CSS for what the input looks like */
+.form-group input {
+    width: 90%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 0.2em solid #efefef;
+    border-radius: 0.4em;
+}
+
+/* Change color when a user is selected on an input box */
+input:focus {
+    outline: none;
+    border-color: #caebf2;
+}
+
+/* CSS for the register button */
+.register-btn, .back-login-btn {
+    width: 50%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.4em;
+    background: #efefef;
+    color: black;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for Login button */
+.register-btn:hover, .back-login-btn:hover {
+    background: #b6e2ec;
+    cursor: pointer;
+}
+
+/* Password mismatch CSS, only shows if passwords are not the same */
+.password-mismatch {
+    color: #ff3b3f;
+    display: none;
+    font-weight: bold;
+}
+
+/* Error message for error registering user */
+.register-error {
+    color: #ff3b3f;
+    display: none;
+    font-weight: bold;
+}
+
+/* Success message for registering user */
+.register-success {
+    color: green;
+    display: none;
+    font-weight: bold;
+}
+
+
+
+
+/* 
+--- Responsive design, less than 650px ---
+*/
+@media screen and (max-width: 650px) { 
+    /* Increase width for better readability */
+    .register-container {
+        width: 50vw;
+    }
+}

@@ -1,0 +1,523 @@
+/*
+CSS for creating the main page (home.html) of the website. Contains CSS for basic parts of webpage.
+Also includes CSS for background, lists (and effects), cards (and effects), sidebar, and modals for editing/adding a card
+*/
+
+/* Basic CSS for the page */
+html, body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+
+/*
+--- Background and the main part of the page ---
+*/
+
+/* CSS for wrapper of entire main page */
+.wrapper {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255 0.5);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    flex-grow: 1;
+}
+
+/* 
+    CSS to show opaque background image 
+    Image found royalty free from here: https://www.pexels.com/search/nature/
+*/
+.wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../images/background.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.75;
+    z-index: -1;
+}
+
+/* CSS for the side bar */
+.sidebar {
+    width: 20%;
+    background-color: #a9a9a9;
+    padding: 1rem;
+    box-sizing: border-box;
+    opacity: 0.95;
+}
+
+/* Main content taking up the rest of the space of the screen */
+.main-container {
+    width: 80%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+
+
+/*
+--- CSS for lists and cards
+*/
+/* Container for each individual list */
+.list-container {
+    background-color: #a9a9a9;
+    border-radius: 0.4em;
+    width: 20vw;
+    padding: 1em;
+    margin: 0.75em;
+    color: white;
+    opacity: 0.95;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 1rem;
+}
+
+/* Header of each list */
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Header of each list */
+.list-header h2 {
+    font-size: 2.5em;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1em;
+    color: #caebf2;
+}
+
+/* Each individual card, for large names and overflow hide the text */
+.card {
+    padding: 0.4em;
+    padding-top: 0.15em;
+    background-color: #efefef;
+    color: black;
+    border-radius: 0.4em;
+    margin-top: 0.5em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Border hover effect over cards */
+.card:hover {
+    cursor: pointer;
+    border: 0.3em solid #caebf2;
+    box-shadow: 0 0 0.5em #caebf2;
+}
+
+/* Add a card button */
+.add-card-btn {
+    width: 30%;
+    padding: 0.1em;
+    margin: 0;
+    margin-top: 0.5em;
+    border: none;
+    border-radius: 0.4em;
+    background: #efefef;
+    color: black;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for button to add a card */
+.add-card-btn:hover {
+    background: #b6e2ec;
+    cursor: pointer;
+}
+
+
+
+/*
+--- CSS for modal for when user wants to add a card
+*/
+
+/* The modal itself, hidden by default unless user clicks "Add a card" */
+.modal {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 30vw;
+    height: 40vh;
+    transform: translate(-50%, -50%);
+    z-index: 100; 
+    overflow: auto;
+    border-radius: 2em;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.5);
+}
+
+/* Inner content of the modal */
+.modal-content {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #efefef;
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header within the content of the modal */
+.modal-content h4 {
+    color: black;
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container of the header */
+.modal-header {
+    margin: 0;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* Each group of inputs of the modal */
+#add-card-form-group {
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* CSS for what the input looks like */
+#card-name, #card-desc {
+    width: 95%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 0.2em solid #efefef;
+    border-radius: 0.4em;
+}
+
+/* Do not allow textarea here to be resized */
+#card-desc {
+    resize: none;
+    height: 4rem;
+}
+
+/* Change color when a user is selected on an input box */
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #caebf2;
+}
+
+/* CSS for "Add Card" Button */
+.submit-new-card-btn {
+    width: 30%;
+    padding: 0.75rem;
+    margin: 1.25rem;
+    border: none;
+    border-radius:  0.2em;
+    background: rgb(150, 149, 149);
+    color: black;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+/* Slightly different CSS for button at bottom, hug the right side */
+.form-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+/* Hover effect for "Add Card" button */
+.submit-new-card-btn:hover {
+    background: #b6e2ec;
+    cursor: pointer;
+}
+
+/* CSS for "X" at the top right of the modal */
+.close-btn {
+    background: none;
+    color: black;
+    font-size: 3em;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+/* Hover effect for the "X" to close out of modal*/
+.close-btn:hover,
+.close-btn:focus {
+    color: #ff3b3f;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+/*
+--- CSS for modal for when user wants to edit a card
+*/
+
+/* Groups of inputs CSS */
+#edit-card-form-group {
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* CSS for what the input looks like */
+#edit-card-name, #edit-card-desc {
+    width: 95%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 0.2em solid #efefef;
+    border-radius: 0.4em;
+}
+
+/* Textarea, do not let it resize */
+#edit-card-desc {
+    resize: none;
+    height: 4rem;
+}
+
+/* CSS for "Save" Button */
+.save-edit-btn, .delete-card-btn {
+    padding: 0.75rem;
+    margin: 1.25rem;
+    border: none;
+    border-radius: 0.2em;
+    background: #a9a9a9;
+    color: black;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the save edit button */
+.save-edit-btn:hover {
+    background: #b6e2ec;
+    cursor: pointer;
+}
+
+/* Change the hover of the delete card button to stand out more */
+.delete-card-btn:hover {
+    background: #ff3b3f;
+    cursor: pointer;
+}
+
+/* Containing the delete and save button */
+.edit-form-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+/*
+--- CSS for moving cards
+*/
+
+/* CSS for when a card is being dragged, scale it and rotate it and add a border */
+.draggable-item.being-dragged {
+    opacity: 0.75;
+    transform: rotate(3deg) scale(1.05); 
+    cursor: grabbing; 
+    border: 0.3em solid rgba(255, 165, 0, 0.5); 
+    box-shadow: 0 2em 3em rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease; 
+}
+
+/* List transition when hovering over */
+.drop-zone {
+    transition: background-color 0.2s ease;
+}
+
+/* Change background color slightly of list container when hovered over */
+.drop-zone.over {
+    background-color: #5a5a5a;
+}
+
+
+
+/*
+--- CSS for side bar
+*/
+
+/* Welcome, *user* message on the sidebar */
+.welcome-message {
+    color: white;
+    padding: 0.4em;
+    margin: 0.2em;
+    font-size: 1.2em;
+}
+
+/* CSS for sidebar list */
+.sidebar-content {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* CSS for each sidebar item */
+.sidebar-link-item {
+    padding: 0.4em;
+    margin: 0.2em;
+    margin-bottom: 0.8em;
+}
+
+/* For the link itself */
+.sidebar-link {
+    text-decoration: none;
+    color: white;
+    display: block;
+    width: 100%;
+    font-size: 1.75em;
+    border-radius: 0.2em;
+}
+
+/* Hover effect for sidebar links, slightly different from background */
+.sidebar-link:hover {
+    background-color: #a1a1a1;
+}
+
+
+
+/* 
+--- Responsive design, make fonts smaller ---
+*/
+@media screen and (max-width: 1000px) { 
+    /* Remove padding to better fit lists */
+    .main-container {
+        padding: 0;
+    }
+
+    /* Increase width of the add a card button for better view */
+    .add-card-btn {
+        width: 50%;
+    }
+
+    /* Decrease the size of the welcome message */
+    .welcome-message {
+        font-size: 0.7em;
+    }
+
+    /* Decrease the size of the sidebar links text */
+    .sidebar-link {
+        font-size: 1em;
+    }
+
+    /* Make list header title smaller */
+    .list-header h2 {
+        font-size: 1.5em;
+    }
+
+    /* Change size of the modals */
+    .modal {
+        width: 80vw; 
+        height: auto;
+    }
+}
+
+
+
+/* 
+--- Responsive design, less than 650px ---
+*/
+@media screen and (max-width: 650px) { 
+    /* Edit side bar */
+    .sidebar {
+        width: 20%;
+        height: auto;
+        padding: 0.5rem;
+    }
+
+    /* Welcome message smaller and remove bold to make it more readable*/
+    .welcome-message {
+        font-size: 0.5em;
+        font-weight: 100;
+    }
+
+    /* Change main container to be vertical with each list after each other*/
+    .main-container {
+        width: 80%;
+        padding: 0.5rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Fit list containers better on the page */
+    .list-container {
+        width: 85%; 
+        margin: 0.5em 0;
+        padding: 0.5em;
+    }
+
+    /* Change width and spacing of cards */
+    .card {
+        margin-top: 0.3em;
+        width: 90%;
+    }
+
+    /* Font size of headers of list containers is smaller */
+    .list-header h2 {
+        font-size: 1.75em;
+    }
+
+    /* Font size of link items are smaller to be more readable */
+    .sidebar-link {
+        font-size: 1.1em; 
+    }
+
+    /* Change size of the modals */
+    .modal {
+        width: 80vw; 
+        height: auto;
+    }
+
+    /* Have modal content be */
+    .modal-content {
+        flex-direction: column;
+    }
+
+    /* Make the inputs when use opens card to be more readable*/
+    #card-name, #card-desc, #edit-card-name, #edit-card-desc {
+        width: 90%; 
+    }
+
+    /* Make submit buttons on modals larger */
+    .submit-new-card-btn, .save-edit-btn, .delete-card-btn {
+        width: 90%; 
+    }
+
+    /* Modal buttons are vertical */
+    .edit-form-btns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+}

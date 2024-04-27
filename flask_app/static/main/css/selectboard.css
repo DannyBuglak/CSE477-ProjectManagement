@@ -1,0 +1,118 @@
+/*
+CSS for the selection board page on selectboard.html
+*/
+
+/* CSS for selecting a board page */
+.select-page {
+    position: relative;
+    background-color: rgba(255, 255, 255 0.5);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background image */
+.select-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../images/background.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+/* CSS for entire container */
+.select-container {
+    width: 40vw;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #a9a9a9;
+    border-radius: 2em;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.5);
+    text-align: center;
+    z-index: 5;
+}
+
+/* Change the color and bold the user name */
+.user {
+    color: #caebf2;
+    font-weight: bold;
+}
+
+/* CSS for the back button */
+.back-button {
+    width: 30%;
+    padding: 0.75rem;
+    margin: 1.25rem;
+    border: none;
+    border-radius: 0.4em;
+    background: #efefef;
+    color: black;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background: #b6e2ec;
+    cursor: pointer;
+}
+
+
+
+/*
+--- CSS for the list of boards available
+--- List will be dynamic and overflow in y direction
+*/
+.boards-list-container {
+    background-color: white; 
+    max-height: 50vh; 
+    overflow-y: auto; 
+    border: 0.2em solid #caebf2; 
+    padding: 0.5em; 
+    margin: 0.2em 0;
+    border-radius: 0.4em; 
+}
+
+.boards-list {
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0;
+}
+  
+.board-item-link {
+    display: block; 
+    padding: 0.8em; 
+    margin: 0.25em 0; 
+    background-color: #efefef;
+    text-align: center; 
+    border: 0.1em solid #caebf2; 
+    border-radius: 0.6em; 
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    color: black;
+}
+
+.board-item-link:hover{
+    background-color: #caebf2;
+}
+
+
+
+/* 
+--- Responsive design, less than 650px ---
+*/
+@media screen and (max-width: 650px) { 
+    /* Increase width for better readability */
+    .select-container {
+        width: 60vw;
+    }
+}

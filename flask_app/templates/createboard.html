@@ -1,0 +1,49 @@
+{% extends 'shared/layout.html' %}
+
+<!-- When creating a board, this page opens up -->
+
+{% block extracss %}
+<link rel="stylesheet"    href="{{ url_for('static', filename='main/css/createboard.css') }}">  
+{% endblock %}
+
+{% block extrajs %}
+<script src="{{ url_for('static', filename='main/js/createboard.js') }}" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+
+{% block maincontent %}
+
+<div class="create-page">
+    <!-- Create board container -->
+    <div class="create-container">
+        <h2>Create a New Board for <span class="user">{{user}}</span></h2>
+
+        <!-- Creating a board form, get project name and user must input at least one member email -->
+        <form>
+            <div class="create-board-form"  id="create-board-form">
+                <label for="project-name">Project Name:</label>
+                <input type="text" id="project-name" name="project-name" title="project-name" required>
+            </div>
+
+            <div class="create-board-form"  id="create-board-form">
+                <label for="member-emails">Member Emails:</label>
+                <textarea id="member-emails" name="member-emails" placeholder="Enter emails separated by commas..." title="member-emails" required></textarea>
+            </div>
+
+            <div class="create-board-form"  id="create-board-form">
+                <button type="button" class="create-board-submit-btn" id="create-board-submit-btn">Create Board</button>
+            </div>
+
+            <!-- Possible errors that can occur, no display by default but JS can change this -->
+            <p id="create-name-error">Please Enter a Project Name</p>
+            <p id="create-emails-error">Please Enter at Least 1 Member</p>
+            <p id="creating-error">Error Creating Board - Could it be that board already exists?</p>
+            <p id="emails-not-found-error">Please ensure that the emails are registered users.</p>
+
+            <button type="button" class="back-button" id="back-button">Back</button>
+            
+        </form>
+    </div>
+</div>
+
+{% endblock %}

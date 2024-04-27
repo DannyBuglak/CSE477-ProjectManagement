@@ -1,0 +1,15 @@
+/*
+CSS for the footer of the website
+*/
+
+/* CSS for positioning and look of the footer */
+footer {
+    background-color: #a9a9a9;
+    font-size: 1rem;
+    text-align: center;
+    width: 100%;
+    color: #efefef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

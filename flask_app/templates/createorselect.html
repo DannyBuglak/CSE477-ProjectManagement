@@ -1,0 +1,31 @@
+{% extends 'shared/layout.html' %}
+
+<!-- Give the user an option to create or select a board -->
+
+{% block extracss %}
+<link rel="stylesheet"    href="{{ url_for('static', filename='main/css/createorselect.css') }}">  
+{% endblock %}
+
+{% block extrajs %}
+<script src="{{ url_for('static', filename='main/js/createorselect.js') }}" defer></script>
+{% endblock %}
+
+{% block maincontent %}
+
+<div class="choose-page">
+    <!-- Choose option container -->
+    <div class="choose-container">
+        <h2>Welcome <span class="user">{{ user }}</span></h2>
+        <p>Please select an option below</p>
+    
+        <!-- Options to select or create a board -->
+        <div class="options-container">
+            <button type="button" class="select-choice-btn" id="select-board-btn">Select a Board</button>
+            <button type="button" class="select-choice-btn" id="create-board-btn">Create a Board</button>
+            <button type="button" class="select-choice-btn" id="logout-btn">Log Out</button>
+        </div>
+    
+    </div>
+</div>
+
+{% endblock %}

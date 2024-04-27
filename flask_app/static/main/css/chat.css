@@ -1,0 +1,119 @@
+/*
+CSS for the chat room in chat.html and features relating to chat room
+*/
+
+/* Wrapper of chat room */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Div containing chat screen */
+.chat-main {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    height: 80%;
+    background-color: #a9a9a9;
+    opacity: 0.98;
+    border-radius: 3em;
+    align-self: center;
+    padding: 1em;
+}
+
+/* Header of Chat Room */
+.chat-title {
+    color: #caebf2;
+    font-weight: bold;
+    font-size: 3em;
+    padding: 0;
+}
+
+/* Chat box */
+#chat {
+    margin-top: .5em;
+    width: 40vw;
+    height: 25em;
+    padding: 0.4em 0.8em;
+    box-sizing: border-box;
+    border: 0.2em solid #ccc;
+    border-radius: 0.25em;
+    background-color: #f8f8f8;
+    font-size: 1em;
+    resize: none;
+    overflow-y:auto
+}
+
+hr {
+    color: #caebf2;
+    width: 100%;
+}
+
+/* Message input */
+input[type="text"] {
+    margin-top: 0.5em;
+    width: 30vw;
+    height: 5em;
+    overflow-y: auto;
+}
+
+/* Change color when user is focused on it*/
+input[type="text"]:focus {
+    border-color:#caebf2;
+    outline: none;
+}
+
+/* Button for submit message and leave chat CSS */
+.chat-button {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    width: 20vw;
+    height: 5vh;
+    padding: 0.5em;
+    border: none;
+    border-radius: 0.5em;
+    background-color: #efefef;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #a9a9a9;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Change color on hover */
+.chat-button:hover {
+    background: #caebf2;
+}
+
+/* Hide the current user id div so it is just stored */
+#current-user-id {
+    display: none;
+}
+
+
+
+/* 
+--- Responsive design, less than 650px ---
+*/
+@media screen and (max-width: 650px) { 
+    /* Make the chat more viewable*/
+    #chat {
+        width: 60vw;
+        font-size: 0.75em;
+        height: 35em;
+    }
+
+    /* Increase width of text input */
+    input[type="text"] {
+        width: 50vw;
+    }
+
+    /* Increase width of the chat buttons*/
+    .chat-button {
+        width: 40vw;
+    }
+    
+}

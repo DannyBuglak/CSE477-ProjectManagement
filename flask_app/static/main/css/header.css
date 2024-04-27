@@ -1,0 +1,12 @@
+/*
+CSS for header of the website
+*/
+
+/* Header css */
+header {
+    height: 5rem; 
+    background-size: cover;
+    background-color: #a9a9a9;
+}
+
+

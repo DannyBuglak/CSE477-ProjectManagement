@@ -1,0 +1,141 @@
+{% extends 'shared/layout.html' %}
+
+{% block extrajs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.socket.io/3.1.1/socket.io.min.js"></script>
+<script src="{{ url_for('static', filename='main/js/main.js') }}" defer></script>
+{% endblock %}
+
+{% block maincontent %}
+    <!-- The header of the Trello board -->
+    <header>
+        <!-- Navigation bar -->
+        <nav>
+            <div class="page-name">
+                Board: {{board}}
+            </div>
+            <!-- Div containing buttons of CSS -->
+            <div class="buttons">
+                <a href="/logout">
+                    <button class="log-out-button">
+                        Log Out
+                    </button>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <!-- Div containing all of main screen -->
+    <div class="wrapper"> 
+        <!-- Side bar -->
+        <div class="sidebar">
+            <hr>
+
+            <h3 class="welcome-message">
+                Welcome, {{ user }}
+            </h3>
+
+            <hr>
+
+            <ul class="sidebar-content">
+                <!-- Allow user to select or create a new board from the home screen -->
+                <li class="sidebar-link-item">
+                    <a href="/selectboard" class="sidebar-link">
+                        Select a Board
+                    </a>
+                </li>
+                <li class="sidebar-link-item">
+                    <a href="/createboard" class="sidebar-link">
+                        Create a New Board
+                    </a>
+                </li>
+                <hr>
+                <li class="sidebar-link-item">
+                    <a href="/chat/{{ board_id }}" class="sidebar-link">
+                        Chat Room
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- main content for lists-->
+        <div class="main-container">
+            {% for list in lists %}
+                <!-- Mark the list container as a drop zone for draggable items and keep track of its ID -->
+                <div class="list-container drop-zone" data-list-id="{{ list['list_id'] }}">
+                    <!-- List header -->
+                    <div class="list-header">
+                        <h2>{{ list['list_name'] }}</h2>
+                    </div>
+                    <hr>
+                    <!-- The cards associated with the list -->
+                    <div class="cards" id="cards">
+                        <!-- Will be populated by the code in main.js when adding a card and/or fetching a card -->
+                    </div>
+                    <button class="add-card-btn" id="add-card-btn" data-list-id="{{ list['list_name'] }}">Add a Card</button>
+                </div>
+            {% endfor %}
+
+
+            <!-- Modal for adding a new card -->
+            <div id="add-card-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Add a Card</h4>
+                        <span class="close-btn" id="close-btn">&times;</span>
+                    </div>
+                    
+                    <form id="add-card-form">
+                        <div id="add-card-form-group">
+                            <label for="card-name">Card Name:</label>
+                            <input type="text" id="card-name" name="card-name" title="card-name" required>
+                        </div>
+                        
+                        <div id="add-card-form-group">
+                            <label for="card-desc">Description:</label>
+                            <textarea id="card-desc" name="card-desc" title="card-desc" required></textarea>
+                        </div>
+                        
+                        <div id="add-card-form-group" class="form-btn">
+                            <button type="button" class="submit-new-card-btn">Add Card</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+            <!-- Modal for editing a card -->
+            <div id="edit-card-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Edit Card</h4>
+                        <span class="close-btn" id="close-btn">&times;</span>
+                    </div>
+
+                    <form id="edit-card-form">
+                        <div id="edit-card-form-group">
+                            <input type="hidden" id="edit-card-id">
+                            <label for="edit-card-name">Card Name:</label>
+                            <input type="text" id="edit-card-name" name="card-name" title="card-name">
+                        </div>
+                        
+                        <div id="edit-card-form-group">
+                            <label for="edit-card-desc">Desription:</label>
+                            <textarea id="edit-card-desc" name="card-desc" title="card-desc"></textarea>
+                        </div>
+                        
+                        <div class="edit-form-btns">
+                            <button type="button" class="delete-card-btn">Delete Card</button>
+                            <button type="button" class="save-edit-btn">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+{% endblock %}

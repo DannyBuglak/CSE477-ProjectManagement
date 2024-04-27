@@ -1,0 +1,57 @@
+/*
+CSS for the navigation bar of the webpage
+*/
+
+/* Nav bar color*/
+nav {
+    color: #efefef;
+    height: 100%;
+    padding-left: 1.0rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+} 
+
+/* Page name css */
+.page-name {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* CSS for div containing the buttons */
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* CSS for button to go to chat room and log out, Home button only shows up in the chat room */
+.log-out-button, .home-button {
+    text-align: center;
+    background-color: #efefef;
+    color: #a9a9a9;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 1em;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    width: 6em;
+    height: 2.75em;
+    font-size: 1.25em;
+}
+
+/* Hover effects for buttons */
+.chat-button:hover, .log-out-button:hover, .home-button:hover {
+    box-shadow: 0 0.25em 0.25em 0 rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* CSS for link item in log out button */
+.log-out-button a {
+    text-decoration: none;
+    color: #a9a9a9;
+}
