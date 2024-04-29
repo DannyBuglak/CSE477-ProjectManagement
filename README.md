@@ -1,4 +1,9 @@
-# [Web Application Development](https://gitlab.msu.edu/cse477-spring-2024/course-materials/): Final Exam
+# MSU - CSE 477 - Web Development
+
+This was my final project for CSE 477, resulting in a 100%. All idea credit and help is from [Professor Mohammad M. Ghassemi](https://ghassemi.xyz/).
+
+
+# Web Application Development: Final Exam
 
 ## Purpose
 
